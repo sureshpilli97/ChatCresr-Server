@@ -1,5 +1,11 @@
 const express = require("express");
-const { sendOtp, verifyOtpAndRegister, login, updateUser, getUser } = require("../controllers/authController");
+const {
+  sendOtp,
+  verifyOtpAndRegister,
+  login,
+  updateUser,
+  getUser,
+} = require("../controllers/authController");
 const authenticateJWT = require("../middleware/authenticateJWT");
 
 const router = express.Router();
@@ -9,7 +15,7 @@ router.post("/register", verifyOtpAndRegister);
 
 router.post("/login", login);
 
-router.post("/update", authenticateJWT, updateUser);
+router.put("/update", authenticateJWT, updateUser);
 router.get("/", authenticateJWT, getUser);
 
 module.exports = router;
